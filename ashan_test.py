@@ -33,7 +33,7 @@ def check_link(urls):
             html = requests.head(url, timeout = 10)
             dict1[url] = html.status_code
             logger.info(url + '-----' + str(html.status_code))
-            # print(html.status_code)
+            
             if html.status_code != 301:
                 continue
             url_unshorten = html.headers['Location']
@@ -48,6 +48,8 @@ def check_link(urls):
             inst = sys.exc_info()[1]
             logger.debug(inst.args[0])
             # time.sleep(300)
-
+    print(dict1)
+    print(dict2)
+    print(dict3)
 
 check_link(urls)
